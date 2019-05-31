@@ -10,13 +10,21 @@
   background:"#222222"
   color:"#ffffff"
    /]
+
 [section]
+[Aside]
+![cars](static/images/avg_debt.png)
+[/Aside]
 On May 19, 2019, Morehouse College commencement speaker and private equity billionaire Robert F. Smith pledged to pay off the student loan debt for the entire graduating class.
 The combined debt for the 400 graduating seniors amounted to approximately $40 million, or about $100,000 per person.
+
+
+The average student debt of a graduating senior in 2017 was $37,712 [Source](https://www.debt.org/students/).
 
 In the United States, more than 44 million people owe a combined total of over $1.5 trillion, surpassing both auto loan debt and credit card debt.
 
 Furthermore, this figure represents a 129% increase since 2008.
+
 [/section]
 
 // Debt
@@ -38,31 +46,65 @@ Furthermore, this figure represents a 129% increase since 2008.
       {x: 'NU', y: 19718}
     ]`
   /]
-  [caption]Average Student Loan Debt for Big 10 Graduates Source: The Institute for College Access & Success, College InSight, http://www.college-insight.org
+  [caption] Average Student Loan Debt for Big 10 Graduates Source: [The Institute for College Access & Success, College InSight](http://www.college-insight.org)
   [/caption]
 [/Aside]
 
 ## Tuition
+Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
 
-## How much could you pay?
+[Aside]
   [ReactMinimalPieChart
     data:`[
       {title: 'Student Loans', value: 1.41, color: '#66c2a5'},
       {title: 'Auto', value: 1.24, color: '#fc8d62'},
       {title: 'Credit Card', value: .45, color: '#8da0cb'},
       {title: 'Mortgage', value: 9, color: '#e78ac3'}]`
-    label: `true`
+    label: `function (props) {
+      return props.data[props.dataIndex].title
+    }`
+    labelStyle: `{
+      fontSize: '5px',
+      fontFamily: 'sans-serif',
+      fill: '#121212'
+    }`
   /]
 
-
-
-
-  [caption] Total Household Debt Source: https://www.reuters.com/article/us-usa-fed-debt/u-s-household-debt-rises-to-13-3-trillion-in-second-quarter-idUSKBN1KZ1QZ
+  [caption] Total Household Debt [Source](https://www.reuters.com/article/us-usa-fed-debt/u-s-household-debt-rises-to-13-3-trillion-in-second-quarter-idUSKBN1KZ1QZ)
   [/caption]
+[/Aside]
+
+## How much could you pay?
+Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+
+[Aside]
+  [var name:"expectedDebt" value:37712 /]
+  [TextInput value:expectedDebt /]
+[/Aside]
+
 ## Expected Debt
+Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
 
+
+[Aside]
+  [var name:"interestRate" value:5.5 /]
+  [TextInput value:interestRate /]
+[/Aside]
 ## Interest Rates
+Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
 
+
+[Aside]
+  [var name:"loanTerm" value:10 /]
+  [TextInput value:loanTerm /]
+[/Aside]
 ## Loan Term
+Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
 
+
+[Aside]
+  [var name:"paymentAmount" value:100 /]
+  [TextInput value:paymentAmount /]
+[/Aside]
 ## Payment Amount
+Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.

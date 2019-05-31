@@ -3,7 +3,7 @@ const D3Component = require('idyll-d3-component');
 const d3 = require('d3');
 
 const size = 600;
-var height = 500;
+var height = 400;
 var width = 600;
 var margin = { top: 20, right: 20, bottom: 30, left: 40 },
   width = 600 - margin.left - margin.right,

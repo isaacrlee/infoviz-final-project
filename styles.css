@@ -20,3 +20,7 @@ div.tooltip {
   border: 0px;
   pointer-events: none;
 }
+
+caption {
+  width: 300px;
+}
