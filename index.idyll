@@ -11,100 +11,121 @@
   color:"#ffffff"
    /]
 
-[section]
 [Aside]
 ![cars](static/images/avg_debt.png)
+[caption]
+What you could buy with $37,712
+[/caption]
 [/Aside]
-On May 19, 2019, Morehouse College commencement speaker and private equity billionaire Robert F. Smith pledged to pay off the student loan debt for the entire graduating class.
+
+On May 19, 2019, Morehouse College commencement speaker and private equity billionaire Robert F. Smith
+pledged to pay off the student loan debt for the entire graduating class [Source](https://www.nytimes.com/2019/05/19/education/morehouse-college-robert-f-smith.html).
 The combined debt for the 400 graduating seniors amounted to approximately $40 million, or about $100,000 per person.
 
+What kind of financial impact do these student loans have on the lives of students? We will walk you through the basics of student loans, and discuss the process of paying them back.
 
-The average student debt of a graduating senior in 2017 was $37,712 [Source](https://www.debt.org/students/).
+To start, the average student debt of a graduating senior in the class of 2017 was $37,712 [Source](https://www.debt.org/students/).
+
+For context, with that money you could buy a new luxury car, 36 months of rent in Evanston, or 37 iPhone X.
+
+
+The graph below shows the average student debt at graduation for students in the Big 10.
+
+Although Northwestern is the only private school in the Big 10 (so we have higher tuition), the institution can afford to give out more merit aid, so we have the lowest average student loan debt [Source](https://www.fastweb.com/student-life/articles/how-to-afford-a-private-university).
+[CustomD3Component
+data:`[
+  {x: 'PSU', y: 37307},
+  {x: 'RU', y: 32601},
+  {x: 'MSU', y: 32310},
+  {x: 'IU', y: 28792},
+  {x: 'UI', y: 28405},
+  {x: 'OSU', y: 28158},
+  {x: 'UW', y: 27979},
+  {x: 'PU', y: 27617},
+  {x: 'UMinn', y: 26568},
+  {x: 'UMich', y: 25712},
+  {x: "UIUC", y: 25550},
+  {x: 'UN', y: 22918},
+  {x: 'NU', y: 19718}
+]`
+/]
+[caption] Average Student Loan Debt for Big 10 Graduates Source: [The Institute for College Access & Success, College InSight](http://www.college-insight.org)[/caption]
+
+
+
+// [Aside]
+[ReactMinimalPieChart
+  data:`[
+    {title: 'Student Loans', value: 1.41, color: '#66c2a5'},
+    {title: 'Auto', value: 1.24, color: '#fc8d62'},
+    {title: 'Credit Card', value: .45, color: '#8da0cb'},
+    {title: 'Mortgage', value: 9, color: '#e78ac3'}]`
+  label: `function (props) {
+    return props.data[props.dataIndex].title
+  }`
+  labelStyle: `{
+    fontSize: '5px',
+    fontFamily: 'sans-serif',
+    fill: '#121212'
+  }`
+/]
+
+[caption] Total Household Debt
+[Source](https://www.reuters.com/article/us-usa-fed-debt/u-s-household-debt-rises-to-13-3-trillion-in-second-quarter-idUSKBN1KZ1QZ)
+[/caption]
+// [/Aside]
 
 In the United States, more than 44 million people owe a combined total of over $1.5 trillion, surpassing both auto loan debt and credit card debt.
 
 Furthermore, this figure represents a 129% increase since 2008.
 
-[/section]
+But why is student loan debt growing so quickly? Part of the answer lies in the rising tuition costs of attending university.
 
-// Debt
-[Aside]
-  [CustomD3Component
-    data:`[
-      {x: 'PSU', y: 37307},
-      {x: 'RU', y: 32601},
-      {x: 'MSU', y: 32310},
-      {x: 'IU', y: 28792},
-      {x: 'UI', y: 28405},
-      {x: 'OSU', y: 28158},
-      {x: 'UW', y: 27979},
-      {x: 'PU', y: 27617},
-      {x: 'UMinn', y: 26568},
-      {x: 'UMich', y: 25712},
-      {x: "UIUC", y: 25550},
-      {x: 'UN', y: 22918},
-      {x: 'NU', y: 19718}
-    ]`
-  /]
-  [caption] Average Student Loan Debt for Big 10 Graduates Source: [The Institute for College Access & Success, College InSight](http://www.college-insight.org)
-  [/caption]
-[/Aside]
+## Rising Tuition Costs
+It is no secret that over the past 30 years college has gotten a lot more expensive. Even when adjusted for [inflation](https://www.cnbc.com/2017/11/29/how-much-college-tuition-has-increased-from-1988-to-2018.html), on average, students must pay over 2.5 times as much to attend university as those who attended university 30 years ago.
 
-## Tuition
-Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+The graph below shows the average tuition of private and public schools in current US dollars.
+// [FullWidth]
+[line /]
+[caption]
+Average Tuition in Current USD Source: [CollegeBoard](https://trends.collegeboard.org/college-pricing/figures-tables/tuition-fees-room-and-board-over-time)
+[/caption]
+// [/FullWidth]
 
-[Aside]
-  [ReactMinimalPieChart
-    data:`[
-      {title: 'Student Loans', value: 1.41, color: '#66c2a5'},
-      {title: 'Auto', value: 1.24, color: '#fc8d62'},
-      {title: 'Credit Card', value: .45, color: '#8da0cb'},
-      {title: 'Mortgage', value: 9, color: '#e78ac3'}]`
-    label: `function (props) {
-      return props.data[props.dataIndex].title
-    }`
-    labelStyle: `{
-      fontSize: '5px',
-      fontFamily: 'sans-serif',
-      fill: '#121212'
-    }`
-  /]
+// College tuition prices have risen faster than housing [prices](https://www.nas.org/blogs/dicta/college_tuition_vs_home_prices_vs_cpi_no_comment), [wages](https://college-education.procon.org/view.resource.php?resourceID=005532), and overall [inflation](https://inflationdata.com/articles/charts/college-tuition-fees-inflation/).
 
-  [caption] Total Household Debt [Source](https://www.reuters.com/article/us-usa-fed-debt/u-s-household-debt-rises-to-13-3-trillion-in-second-quarter-idUSKBN1KZ1QZ)
-  [/caption]
-[/Aside]
+As a result, many students are taking out loans to help pay for their college educations, and poor planning or a lack of knowledge about these loans can become a major problem later on in life.
 
 ## How much could you pay?
-Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-
-[Aside]
-  [var name:"expectedDebt" value:37712 /]
-  [TextInput value:expectedDebt /]
-[/Aside]
+When you borrow $1,000 from the bank, you pay back $1,000, right? Not exactly. When taking out a loan, there are a
+variety of choices you will make that will impact how much you actually end up paying for your loan. It can be hard
+to understand how interest rates, loan terms, payment plans, and everything else involved in a loan come together to
+form the number of your monthly bill. We’re here to help.
 
 ## Expected Debt
 Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
 
+[var name:"expectedDebt" value:37712 /]
 
-[Aside]
-  [var name:"interestRate" value:5.5 /]
-  [TextInput value:interestRate /]
-[/Aside]
-## Interest Rates
 Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
 
+[var name:"interestRate" value:5.5 /]
 
-[Aside]
-  [var name:"loanTerm" value:10 /]
-  [TextInput value:loanTerm /]
-[/Aside]
 ## Loan Term
-Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+When you borrow anything you will have a due date, and loans are no exception. The term of a loan
+is the amount of time you will have to pay it back. Loan terms can be anything from a few months
+to thirty years. Student loans typically have a term of 10-15 years. While a longer term loan may
+appear more attractive because you have more time to pay it back, it’s important to carefully compare
+shorter-term and longer-term loans - due to interest, you may end up paying more in the long run.
 
+[var name:"loanTerm" value:10 /]
 
-[Aside]
-  [var name:"paymentAmount" value:100 /]
-  [TextInput value:paymentAmount /]
-[/Aside]
 ## Payment Amount
-Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+At some point, you have to start paying back the money you borrowed, and you will start making monthly
+payments to repay your loans. Payments for student loans typically start six months after you graduate.
+
+On your bill, there will be a minimum monthly payment, and you have to pay at least that much every
+month. Be careful though - as we discussed in the previous section, the longer it takes to pay back
+a loan, the more interest you’ll end up paying. Paying more than the minimum when you can will end up
+saving you money in the long run.
+
