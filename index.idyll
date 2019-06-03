@@ -129,3 +129,13 @@ month. Be careful though - as we discussed in the previous section, the longer i
 a loan, the more interest you’ll end up paying. Paying more than the minimum when you can will end up
 saving you money in the long run.
 
+[var name:"incomeText" value:2000 /]
+[TextInput value: incomeText /]
+
+[var name:"monthlyPaymentPercent" value:20 /]
+// What if you increased your monthly payment?
+[Range min:0 max:100 value:monthlyPaymentPercent /]
+// [Display value:monthlyPaymentPercent /]
+
+
+[LoanPaymentsGraph data:`{'expectedDebt': expectedDebt, 'interestRate': interestRate, 'loanTerm': loanTerm, 'income': parseInt(incomeText), 'monthlyPaymentPercent': monthlyPaymentPercent}` /]
