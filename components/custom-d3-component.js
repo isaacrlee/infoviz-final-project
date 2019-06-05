@@ -9,7 +9,7 @@ var margin = { top: 20, right: 20, bottom: 30, left: 40 },
   width = 600 - margin.left - margin.right,
   height = 500 - margin.top - margin.bottom;
 var schools = { "OSU": "Ohio State University", "MSU": "Michigan State University", "IU": "Indiana University", "UMich": "University of Michigan", "UIUC": "University of Illinois Urbana Champaign", "UI": "University of Iowa", "NU": "Northwestern University", "PSU": "Pennsylvania State University", "RU": "Rutgers University", "UMinn": "University of Minnesota", "PU": "Purdue University", "UW": "University of Wisconsin", "UN": "University of Nebraska" }
-
+var bt = 0;
 class CustomD3Component extends D3Component {
 
   initialize(node, props) {
@@ -31,13 +31,41 @@ class CustomD3Component extends D3Component {
     var div = d3.select("body").append("div")
       .attr("class", "tooltip")
       .style("opacity", 0);
+    var ans = d3.select("body").append("div")
+      .attr("class", "ans")
+      .style("opacity", 0);
+    var button = d3.select(node)
+      .append("div")
+      .attr("class", "btn btn-default")
+      .text(function (d) { return 'Why does NU have lower student loan debt?'; })
+      .on("click", function (d) {
+        console.log("button pressed");
+
+        if (bt == 0) {
+          ans.transition()
+            .duration(100)
+            .style("opacity", .9);
+          ans.html("Northwestern is the only private school in the Big 10 (so we have higher tuition), but the institution can afford to give out more merit aid.")
+            .style("left", (450) + "px")
+            .style("top", (d3.event.pageY - 120) + "px");
+          bt = 1;
+        }
+        else {
+          ans.transition()
+            .duration(100)
+            .style("opacity", 0);
+          bt = 0;
+        }
+      });
+
     var data = props.data;
     x.domain(data.map(function (d) { return d.x; }));
     y.domain([0, 37307]);
     svg.selectAll(".bar")
       .data(data)
       .enter().append("rect")
-      .attr("class", "bar").attr("fill", "steelblue")
+      .attr("class", "bar")//.attr("fill", "steelblue")
+      .attr("fill", d => (schools[d.x] === "Northwestern University" ? d3.rgb("#4E2A84") : "steelblue"))
       .attr("x", function (d) { return x(d.x); })
       .attr("width", x.bandwidth())
       .attr("y", function (d) { return y(d.y); })
@@ -47,7 +75,7 @@ class CustomD3Component extends D3Component {
         div.transition()
           .duration(100)
           .style("opacity", .9);
-        div.html("School: " + schools[d.x] + "<br> Avg Loans: $" + d.y)
+        div.html("School: " + schools[d.x] + "<br> Avg Debt: $" + d.y)
           .style("left", (d3.event.pageX) + "px")
           .style("top", (d3.event.pageY - 28) + "px");
       })
