@@ -383,7 +383,7 @@ var test;
 
 var margin = { top: 10, right: 30, bottom: 30, left: 50 },
     width = 460 - margin.left - margin.right,
-    height = 400 - margin.top - margin.bottom;
+    height = 300 - margin.top - margin.bottom;
 
 var LoanPaymentsGraph = function (_D3Component) {
     _inherits(LoanPaymentsGraph, _D3Component);
@@ -521,7 +521,7 @@ var LoanPaymentsGraph = function (_D3Component) {
                 });
 
                 // Updata the line
-                u.enter().append("path").attr("class", "lineTestA").merge(u).transition().duration(1000).attr("d", d3.line().x(function (d) {
+                u.enter().append("path").attr("class", "lineTestA").merge(u).attr("opacity", 0).transition().duration(1000).attr("opacity", 1).attr("d", d3.line().x(function (d) {
                     return x(d.month);
                 }).y(function (d) {
                     return y(d.remainingDebt);
@@ -673,11 +673,11 @@ var LoanPaymentsGraph = function (_D3Component) {
                 var v = svg.selectAll(".lineTestB").data([data2], function (d) {
                     return d.month;
                 });
-                v.enter().append("path").attr("class", "lineTestB").merge(v).transition().duration(3000).attr("d", d3.line().x(function (d) {
+                v.enter().append("path").attr("class", "lineTestB").merge(v).attr("opacity", 0).attr("d", d3.line().x(function (d) {
                     return x(d.month);
                 }).y(function (d) {
                     return y(d.remainingDebt);
-                })).attr("fill", "none").attr("stroke", "green").attr("stroke-width", 2.5);
+                })).attr("fill", "none").attr("stroke", "green").attr("stroke-width", 2.5).transition().duration(1000).attr("opacity", 1);
             }
 
             // At the beginning, I run the update function on the first dataset:
