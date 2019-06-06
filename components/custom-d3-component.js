@@ -45,7 +45,7 @@ class CustomD3Component extends D3Component {
           ans.transition()
             .duration(100)
             .style("opacity", .9);
-          ans.html("Northwestern is the only private school in the Big 10 (so we have higher tuition), but the institution can afford to give out more merit aid.")
+          ans.html("Despite the fact that Northwestern is the most expensive school in the Big Ten, as a private institution the school can offer more merit-based aid, decreasing the loan obligation of its students.")
             .style("left", (450) + "px")
             .style("top", (d3.event.pageY - 120) + "px");
           bt = 1;

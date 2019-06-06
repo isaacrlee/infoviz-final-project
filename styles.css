@@ -215,3 +215,15 @@ fill-opacity: 15%;
   .chart-wrapper .line {stroke-width: 3px;}
   .chart-wrapper .legend {font-size: 14px;}
 }
+
+input[type=radio] {
+  margin-left: 10px;
+}
+
+.blue {
+  color: steelblue;
+}
+
+.green {
+  color: green;
+}

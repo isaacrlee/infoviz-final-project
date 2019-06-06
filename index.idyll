@@ -33,7 +33,7 @@ For context, with that money you could buy a new luxury car, 3 years of rent in 
 [br /]
 [br /]
 
-The graph below shows the average student debt at graduation for students in the Big 10. Hover over the bars to see average debt and tuition cost for one year.
+The graph below shows the average student debt at graduation for students in the Big 10. Hover over the bars to see average debt for one year.
 
 [CustomD3Component
 data:`[
@@ -53,14 +53,10 @@ data:`[
 ]`
 /]
 
-[caption] Average Student Loan Debt for Big 10 Graduates Source: [The Institute for College Access & Success, College InSight](http://www.college-insight.org)[/caption]
+[caption] Average Student Loan Debt for Big 10 Graduates: [The Institute for College Access & Success, College InSight](http://www.college-insight.org)[/caption]
 
 [br /]
 [br /]
-[br /]
-[br /]
-
-Although Northwestern is the only private school in the Big 10 (so we have higher tuition), the institution can afford to give out more merit aid, so we have the lowest average student loan debt [Source](https://www.fastweb.com/student-life/articles/how-to-afford-a-private-university).
 
 ##The Scope
 In the United States, more than 44 million people owe a combined total of over $1.5 trillion, surpassing both auto loan debt and credit card debt.
@@ -84,11 +80,11 @@ In the United States, more than 44 million people owe a combined total of over $
   className:"pie"
 /]
 
-Total Household Debt
-[Source](https://www.reuters.com/article/us-usa-fed-debt/u-s-household-debt-rises-to-13-3-trillion-in-second-quarter-idUSKBN1KZ1QZ)
+[caption][Total Household Debt](https://www.reuters.com/article/us-usa-fed-debt/u-s-household-debt-rises-to-13-3-trillion-in-second-quarter-idUSKBN1KZ1QZ)[/caption]
 // [/Aside]
 
-
+[br /]
+[br /]
 Furthermore, this figure represents a 129% increase since 2008.
 
 But why is student loan debt growing so quickly? At least part of the answer lies in the rising tuition costs of attending university.
@@ -99,7 +95,7 @@ It is no secret that over the past 30 years college has gotten a lot more expens
 The graph below shows the average tuition of private and public schools in current US dollars.
 // [FullWidth]
 [line /]
-Average Tuition in Current USD Source: [CollegeBoard](https://trends.collegeboard.org/college-pricing/figures-tables/tuition-fees-room-and-board-over-time)
+[caption]Average Tuition in Current USD Source: [CollegeBoard](https://trends.collegeboard.org/college-pricing/figures-tables/tuition-fees-room-and-board-over-time)[/caption]
 // [/FullWidth]
 
 College tuition prices have risen faster than housing [prices](https://www.nas.org/blogs/dicta/college_tuition_vs_home_prices_vs_cpi_no_comment), [wages](https://college-education.procon.org/view.resource.php?resourceID=005532), and overall [inflation](https://inflationdata.com/articles/charts/college-tuition-fees-inflation/).
@@ -112,8 +108,8 @@ When you borrow $1,000 from the bank, you pay back $1,000, right? Not exactly. W
 ## Expected Debt
 How much you need in student loans can be tricky to figure out. Even if you are in need of some form of financial aid, loans are not the only way to help pay for school. Some people may receive grants, which do not need to be repaid, while other may get a work study job.
 
-[var name:"expectedDebtText" value:37712 /]
-Expected Debt: [TextInput value: expectedDebtText /]
+[var name:"expectedDebt" value:37712 /]
+Expected Debt: [Range min: 0 max: 300000 step: 5000 value: expectedDebt /] [Display value: expectedDebt /]
 
 
 ## Interest Rate
@@ -127,29 +123,70 @@ Interest Rate: [TextInput value: interestRateText /]
 ## Loan Term
 When you borrow anything you will have a due date, and loans are no exception. The term of a loan is the amount of time you will have to pay it back. Loan terms can be anything from a few months to thirty years. Student loans typically have a term of 10-15 years. While a longer term loan may appear more attractive because you have more time to pay it back, it’s important to carefully compare shorter-term and longer-term loans - due to interest, you may end up paying more in the long run.
 
-[var name:"loanTermText" value:10 /]
-Loan Term: [TextInput value: loanTermText /]
+[var name:"loanTerm" value:10 /]
+
+[Float position:"left"]
+  Loan Term:  [Display value:loanTerm /]
+  [Range min: 10 max: 30 step: 10 value: loanTerm /]
+[/Float]
+
+[br /]
+[br /]
+[br /]
+
 
 ## Payment Amount
 At some point, you have to start paying back the money you borrowed, and you will start making monthly payments to repay your loans. Payments for student loans typically start six months after you graduate.
 
 On your bill, there will be a minimum monthly payment, and you have to pay at least that much every month. Be careful though - as we discussed in the previous section, the longer it takes to pay back a loan, the more interest you’ll end up paying. Paying more than the minimum when you can will end up saving you money in the long run.
 
-[var name:"monthlyPayment" value:`
-    parseInt(expectedDebtText) * ((parseInt(interestRateText) / (12 * 100)) / (1 - Math.pow(1 + ((parseInt(interestRateText) / (12 * 100))), (- (parseInt(loanTermText) * 12)))))` /]
+[var name:"minPayment" value:`
+    expectedDebt * ((parseInt(interestRateText) / (12 * 100)) / (1 - Math.pow(1 + ((parseInt(interestRateText) / (12 * 100))), (- (loanTerm * 12)))))` /]
 
-Min Payment: [Display value: monthlyPayment /]
+[Float position:"left"]
+  Min Payment: [Dynamic value: `
+    expectedDebt * ((parseInt(interestRateText) / (12 * 100)) / (1 - Math.pow(1 + ((parseInt(interestRateText) / (12 * 100))), (- (loanTerm * 12)))))` /]
+[/Float]
 
-[Range min: 0 max: 1000 value:addlPayment /]
+[var name:"addlPayment" value: 0 /]
 
-Monthly Payment: [Dynamic value: `monthlyPayment + addlPayment` /]
-## Bringing It All together
-This plot shows how much you’ll end up paying for your loan and how long it will take you to pay it. You can adjust the parameters you entered above to see how different combinations of interest, term, and payment come affect how much you end up paying for your loan.
+[Float position:"right"]
+  Monthly Payment: [Dynamic value: `
+      expectedDebt * ((parseInt(interestRateText) / (12 * 100)) / (1 - Math.pow(1 + ((parseInt(interestRateText) / (12 * 100))), (- (loanTerm * 12))))) + addlPayment` /]
+  [Range min: 0 max: 1000 step: 50 value:addlPayment /]
+[/Float]
 
-[div]
-  [Inline] Loan Term: [TextInput value: loanTermText /] [/Inline]
-[/div]
+[br /]
+[br /]
+[br /]
 
-[LoanPaymentsGraph  /]
+## Bringing It All Together
+This plot shows how much you’ll end up paying for your loan and how long it will take you to pay it. You can adjust the parameters you entered above to see how different combinations of interest, term, and payment can affect how much you end up paying for your loan.
 
-// [LoanPaymentsGraph data:`{'expectedDebt': parseInt(expectedDebtText), 'interestRate': parseInt(interestRateText), 'loanTerm': parseInt(loanTermText), 'income': monthlyIncome, 'monthlyPaymentPercent': monthlyPaymentPercent}` /]
+The [span className:"blue"] **blue** [/span] line shows how long it would take you to pay off your loan by paying the minimum amount, and the [span className:"blue"] **blue** [/span] bar shows how much interest you will have paid over the life of the loan. 
+You can experiment with the monthly payment to see how paying more money changes your loan term, shown in the [span className:"green"] **green** [/span] line, and the overall interest paid in the [span className:"green"] **green** [/span] bar. 
+
+
+[Float position:"left"]
+  Loan Term: [Display value:loanTerm /]
+  [Range min: 10 max: 30 step: 10 value: loanTerm /]
+[/Float]
+
+[Float position:"right"]
+  Interest Rate: [TextInput value: interestRateText /]
+[/Float]
+
+[Float position:"left"]
+  Monthly Payment: [Dynamic value: `
+    expectedDebt * ((parseInt(interestRateText) / (12 * 100)) / (1 - Math.pow(1 + ((parseInt(interestRateText) / (12 * 100))), (- (loanTerm * 12))))) + addlPayment` /]
+ [Range min: 0 max: 1000 step: 50 value:addlPayment /]    
+[/Float]
+
+[LoanPaymentsGraph  data:`{
+  'expectedDebt': expectedDebt,
+  'minPayment': 
+    expectedDebt * ((parseInt(interestRateText) / (12 * 100)) / (1 - Math.pow(1 + ((parseInt(interestRateText) / (12 * 100))), (- (loanTerm * 12))))),
+  'addlPayment': addlPayment,
+  'interestRate': parseInt(interestRateText)}` /]
+
+// [LoanPaymentsGraph data:`{'expectedDebt': expectedDebt, 'interestRate': parseInt(interestRateText), 'loanTerm': loanTerm, 'income': monthlyIncome, 'monthlyPaymentPercent': monthlyPaymentPercent}` /]
