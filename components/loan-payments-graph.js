@@ -422,14 +422,14 @@ class LoanPaymentsGraph extends D3Component {
             .attr("x", 500)
             .attr("y", 30)
             .text("Total Interest: $"+ Math.round(minTotalInterest))
-            .style('fill','white');
+            .style('fill','black');
             
     
         s.append("text")
             .attr("x", 500)
             .attr("y", 105)
             .text("Total Interest: $"+ Math.round(totalInterest))
-            .style('fill','white');
+            .style('fill','black');
         
         var length;
         if (month%12==0) {
