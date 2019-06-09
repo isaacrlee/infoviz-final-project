@@ -94,7 +94,8 @@ It is no secret that over the past 30 years college has gotten a lot more expens
 
 The graph below shows the average tuition of private and public schools in current US dollars.
 // [FullWidth]
-[line /]
+[data name:"tuitionData" source:"tuition.csv"/]
+[line data:tuitionData/]
 [caption]Average Tuition in Current USD Source: [CollegeBoard](https://trends.collegeboard.org/college-pricing/figures-tables/tuition-fees-room-and-board-over-time)[/caption]
 // [/FullWidth]
 
@@ -163,8 +164,8 @@ On your bill, there will be a minimum monthly payment, and you have to pay at le
 ## Bringing It All Together
 This plot shows how much you’ll end up paying for your loan and how long it will take you to pay it. You can adjust the parameters you entered above to see how different combinations of interest, term, and payment can affect how much you end up paying for your loan.
 
-The [span className:"blue"] **blue** [/span] line shows how long it would take you to pay off your loan by paying the minimum amount, and the [span className:"blue"] **blue** [/span] bar shows how much interest you will have paid over the life of the loan. 
-You can experiment with the monthly payment to see how paying more money changes your loan term, shown in the [span className:"green"] **green** [/span] line, and the overall interest paid in the [span className:"green"] **green** [/span] bar. 
+The [span className:"blue"] **blue** [/span] line shows how long it would take you to pay off your loan by paying the minimum amount, and the [span className:"blue"] **blue** [/span] bar shows how much interest you will have paid over the life of the loan.
+You can experiment with the monthly payment to see how paying more money changes your loan term, shown in the [span className:"green"] **green** [/span] line, and the overall interest paid in the [span className:"green"] **green** [/span] bar.
 
 
 [Float position:"left"]
@@ -179,12 +180,12 @@ You can experiment with the monthly payment to see how paying more money changes
 [Float position:"left"]
   Monthly Payment: [Dynamic value: `
     expectedDebt * ((parseInt(interestRateText) / (12 * 100)) / (1 - Math.pow(1 + ((parseInt(interestRateText) / (12 * 100))), (- (loanTerm * 12))))) + addlPayment` /]
- [Range min: 0 max: 1000 step: 50 value:addlPayment /]    
+ [Range min: 0 max: 1000 step: 50 value:addlPayment /]
 [/Float]
 
 [LoanPaymentsGraph  data:`{
   'expectedDebt': expectedDebt,
-  'minPayment': 
+  'minPayment':
     expectedDebt * ((parseInt(interestRateText) / (12 * 100)) / (1 - Math.pow(1 + ((parseInt(interestRateText) / (12 * 100))), (- (loanTerm * 12))))),
   'addlPayment': addlPayment,
   'interestRate': parseInt(interestRateText)}` /]

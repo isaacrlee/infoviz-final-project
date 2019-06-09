@@ -10,23 +10,21 @@ class line extends D3Component {
         // var div = d3.select("body").append("div")
         //   .attr("class", "chart-wrapper");
 
-
-        d3.csv('multiline_data.csv', function (error, data) {
-            data.forEach(function (d) {
-                d.year = +d.Year;
-                d.variableA = +d.Private;
-                d.variableB = +d.Public;
-            });
-            console.log(data);
-
-            var chart = makeLineChart(data, 'year', {
-                'Private 4 Year': { column: 'variableA' },
-                'Public 4 Year': { column: 'variableB' },
-            }, { xAxis: 'Years', yAxis: 'Tuition in Current Dollars' });
-            chart.bind("#chart-line1");
-            chart.render();
-
+        var data = props.data;
+        data.forEach(function (d) {
+            d.year = +d.Year;
+            d.variableA = +d.Private;
+            d.variableB = +d.Public;
         });
+        console.log(data);
+
+        var chart = makeLineChart(data, 'year', {
+            'Private 4 Year': { column: 'variableA' },
+            'Public 4 Year': { column: 'variableB' },
+        }, { xAxis: 'Years', yAxis: 'Tuition in Current Dollars' });
+        chart.bind("#chart-line1");
+        chart.render();
+
         function makeLineChart(dataset, xName, yObjs, axisLables) {
             var chartObj = {};
             console.log(dataset);
