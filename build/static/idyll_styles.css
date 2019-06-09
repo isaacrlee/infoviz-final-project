@@ -1091,6 +1091,9 @@ img {
   }
 }
 
+.info {
+  width:620px;
+}
 
 .btn {
   font-size: 14px;

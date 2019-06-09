@@ -187,13 +187,14 @@ class LoanPaymentsGraph extends D3Component {
 
         render(bothData);
 
+
         // var interest1=500;
         // var interest2=100;
         var maxInterest=Math.max(minTotalInterest,totalInterest);
         var x = d3.scaleLinear().range([0,300]).domain([0,maxInterest+10])
         var s=d3.select("body").append("svg")
             .attr("width", 800)
-            .attr("height", 500).attr("class","rectangles")
+            .attr("height", 200).attr("class","rectangles")
             console.log(x(minTotalInterest));
             console.log(x(totalInterest));
     //creating initial circle objects
@@ -213,15 +214,25 @@ class LoanPaymentsGraph extends D3Component {
         s.append("text")
         .attr("x", 500)
         .attr("y", 30)
-        .text("Total Interest: "+ Math.round(minTotalInterest))
+        .text("Total Interest: $"+ Math.round(minTotalInterest))
         .style('fill','black');
 
 
         s.append("text")
         .attr("x", 500)
         .attr("y", 105)
-        .text("Total Interest: "+ Math.round(totalInterest))
+        .text("Total Interest: $"+ Math.round(totalInterest))
         .style('fill','black');
+
+        var length;
+        if (month%12==0) {
+            length=Math.round(month/12) + " years";
+        }
+        else {
+            length=Math.round(month/12) + " years and " + month%12 + " months";
+        }
+        d3.select(".info").html("By paying the <span style='color:steelblue'>minimum</span> per month, you will pay a total of <span style='color:steelblue'>$"+(data.expectedDebt+minTotalInterest).toFixed(2) + "</span> over <span style='color:steelblue'>"+length+"</span>");
+
 
         // .attr("font-family", "sans-serif")
         // .attr("font-size", "20px").attr('fill','black');
@@ -264,6 +275,14 @@ class LoanPaymentsGraph extends D3Component {
 
         }
         minPaymentData.push({"month":month,"remainingDebt":0});
+    
+        var min_length;
+        if (month%12==0) {
+            min_length=Math.round(month/12) + " years";
+        }
+        else {
+            min_length=Math.round(month/12) + " years and " + month%12 + " months";
+        }
 
         // Not Min Payments
         var remainingDebt = data.expectedDebt;
@@ -281,6 +300,14 @@ class LoanPaymentsGraph extends D3Component {
 
         }
         paymentData.push({"month":month,"remainingDebt":0});
+
+        var length;
+        if (month%12==0) {
+            length=Math.round(month/12) + " years";
+        }
+        else {
+            length=Math.round(month/12) + " years and " + month%12 + " months";
+        }
         var bothData=[minPaymentData,paymentData]
 
 
@@ -394,15 +421,24 @@ class LoanPaymentsGraph extends D3Component {
         s.append("text")
             .attr("x", 500)
             .attr("y", 30)
-            .text("Total Interest: "+ Math.round(minTotalInterest))
-            .style('fill','black');
+            .text("Total Interest: $"+ Math.round(minTotalInterest))
+            .style('fill','white');
             
     
         s.append("text")
             .attr("x", 500)
             .attr("y", 105)
-            .text("Total Interest: "+ Math.round(totalInterest))
-            .style('fill','black');
+            .text("Total Interest: $"+ Math.round(totalInterest))
+            .style('fill','white');
+        
+        var length;
+        if (month%12==0) {
+            length=Math.round(month/12) + " years";
+        }
+        else {
+            length=Math.round(month/12) + " years and " + month%12 + " months";
+        }
+        d3.select(".info").html("By paying the <span style='color:steelblue'>minimum</span> per month, you pay a total of <span style='color:steelblue'>$"+(data.expectedDebt+minTotalInterest).toFixed(2) + "</span> over <span style='color:steelblue'>"+min_length +"</span><br>"+ "By paying <span style='color:green'>$" + monthlyPayment.toFixed(2)+"</span>"+" per month, you pay a total of <span style='color:green'>$"+Math.round(data.expectedDebt+totalInterest) + "</span> over <span style='color:green'>"+length + "</span><br><b>This saves you $"+(minTotalInterest-totalInterest).toFixed(2)+"</b>");
 
     }
 }

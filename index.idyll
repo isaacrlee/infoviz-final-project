@@ -190,3 +190,4 @@ You can experiment with the monthly payment to see how paying more money changes
   'interestRate': parseInt(interestRateText)}` /]
 
 // [LoanPaymentsGraph data:`{'expectedDebt': expectedDebt, 'interestRate': parseInt(interestRateText), 'loanTerm': loanTerm, 'income': monthlyIncome, 'monthlyPaymentPercent': monthlyPaymentPercent}` /]
+[div className:"info"][/div]
